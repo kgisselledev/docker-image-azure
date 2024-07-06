@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mi-app-docker-azure-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mi-app-docker-azure
+  template:
+    metadata:
+      labels:
+        app: mi-app-docker-azure
+    spec:
+      containers:
+        - name: mi-app-docker-azure
+          image: luna10/mi-app-docker-azure:1.0
+          ports:
+            - containerPort: 80
